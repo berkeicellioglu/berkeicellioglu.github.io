@@ -1,0 +1,184 @@
+body {
+    background-color: #282828;
+    color: #182d5e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+.envelope {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    background-color: #f2f2f2;
+    border: 2px solid #b1b1b1;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.4s ease, width 0.8s ease, height 0.8s ease;
+    overflow: hidden;
+}
+
+.envelope.opened {
+    width: 600px;
+    height: 400px;
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background-color: #d1d1d1;
+    border-bottom: 2px solid #b1b1b1;
+    border-radius: 0 0 50% 50%;
+    transform-origin: top;
+    transition: transform 0.8s ease;
+    z-index: 2;
+}
+
+.envelope.opened .flap {
+    transform: rotateX(-180deg);
+}
+
+.letter-content {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1;
+}
+
+.envelope.opened .letter-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.header h1,
+.main p,
+.footer p {
+    margin: 0 0 15px;
+    color: #182d5e;
+    font-family: 'Georgia', serif;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.5em;
+}
+
+.footer p {
+    font-size: 1em;
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Çiçek Stili */
+.flowers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.flower {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    animation: floating 4s infinite ease-in-out;
+}
+
+/* Çiçeklerin Konumlandırılması */
+.flower-1 {
+    top: 10%;
+    left: 15%;
+}
+
+.flower-2 {
+    top: 20%;
+    right: 10%;
+}
+
+.flower-3 {
+    bottom: 10%;
+    left: 20%;
+}
+
+.flower-4 {
+    bottom: 20%;
+    right: 15%;
+}
+
+/* Yeni Çiçek (Violet Flower) */
+.flower-5 {
+    bottom: 5%;
+    right: 5%;
+    transform: translate(0, 0);
+    /* Ortalamayı kaldırdık */
+}
+
+/* Hafif Sallanma Animasyonu */
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .envelope {
+        width: 90%;
+    }
+
+    .header h1 {
+        font-size: 1.2em;
+    }
+
+    .main p {
+        font-size: 1em;
+    }
+
+    .flower {
+        width: 10%;
+        /* Daha küçük ekranlarda çiçekler küçülecek */
+    }
+}
+
+@media (max-width: 480px) {
+    .envelope {
+        width: 60%;
+        height: 200px;
+    }
+
+    .header h1 {
+        font-size: 1em;
+    }
+
+    .main p {
+        font-size: 0.9em;
+    }
+
+    .flower {
+        width: 12%;
+        /* Daha küçük ekranlarda daha küçük çiçekler */
+    }
+}
